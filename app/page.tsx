@@ -6,11 +6,18 @@ export default function Home() {
       
 
       <main className="hero">
+        <img
+  src="/mimic-dance.gif"
+  alt="meme"
+  style={{
+    width: "300px",
+    marginTop: "20px",
+    borderRadius: "12px",
+  }}
+/>
         <div className="keep-card">
-          <h1>IngeNotas</h1>
-
-          <p>
-            Guarda ideas, tareas y apuntes importantes en un solo lugar.
+          <h1>IngeNotas</h1><p>
+           Ingenotas, notas para los inges
           </p>
         </div>
       </main>
