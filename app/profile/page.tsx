@@ -37,27 +37,39 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center">
+  <div className="hero">
 
-      <div className="bg-zinc-900 p-8 rounded-2xl w-80 flex flex-col gap-4">
+    <div
+      className="keep-card"
+      style={{
+        maxWidth: "400px",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+      }}
+    >
 
-        <h1 className="text-2xl font-bold text-center">
-          Perfil
-        </h1>
+      <h1>Perfil</h1>
 
-        <div className="bg-zinc-800 p-3 rounded">
-          {email}
-        </div>
-
-        <button
-          onClick={handleLogout}
-          className="bg-red-600 hover:bg-red-700 p-3 rounded"
-        >
-          Cerrar sesión
-        </button>
-
+      <div
+        className="keep-input"
+        style={{
+          cursor: "default",
+        }}
+      >
+        {email}
       </div>
 
+      <button
+        onClick={handleLogout}
+        className="keep-button"
+      >
+        Cerrar sesión
+      </button>
+
     </div>
-  )
+
+  </div>
+)
 }

@@ -23,7 +23,7 @@ export default function NotesPage() {
     if (!user) {
       window.location.href = '/login'
       return
-    }
+    } 
 
     const { data, error } = await supabase
       .from('notes')
@@ -89,71 +89,97 @@ export default function NotesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+  <div style={{ padding: "24px" }}>
 
-      <h1 className="text-3xl font-bold mb-8">
-        Mis Notas
-      </h1>
+    <h1
+      style={{
+        fontSize: "2rem",
+        marginBottom: "24px",
+      }}
+    >
+      Mis Notas
+    </h1>
 
-      <form
-        onSubmit={createNote}
-        className="bg-zinc-900 p-6 rounded-2xl flex flex-col gap-4 mb-8"
+    <form
+      onSubmit={createNote}
+      className="keep-card"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
+        marginBottom: "24px",
+        maxWidth: "700px",
+      }}
+    >
+
+      <input
+        type="text"
+        placeholder="Título"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="keep-input"
+      />
+
+      <textarea
+        placeholder="Escribe una nota..."
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        className="keep-input"
+        style={{
+          minHeight: "120px",
+          resize: "vertical",
+        }}
+      />
+
+      <button
+        type="submit"
+        className="keep-button"
       >
+        Crear Nota
+      </button>
 
-        <input
-          type="text"
-          placeholder="Título"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="bg-zinc-800 p-3 rounded-lg outline-none"
-        />
+    </form>
 
-        <textarea
-          placeholder="Escribe una nota..."
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="bg-zinc-800 p-3 rounded-lg outline-none min-h-32"
-        />
+    <div className="notes-grid">
 
-        <button
-          type="submit"
-          className="bg-violet-600 hover:bg-violet-700 p-3 rounded-lg"
+      {notes.map((note) => (
+
+        <div
+          key={note.id}
+          className="note-card"
         >
-          Crear Nota
-        </button>
 
-      </form>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-        {notes.map((note) => (
-
-          <div
-            key={note.id}
-            className="bg-zinc-900 p-4 rounded-2xl border border-zinc-800"
+          <h2
+            style={{
+              fontSize: "1.2rem",
+              fontWeight: "bold",
+              marginBottom: "8px",
+            }}
           >
+            {note.title}
+          </h2>
 
-            <h2 className="text-xl font-bold mb-2">
-              {note.title}
-            </h2>
+          <p
+            style={{
+              marginBottom: "16px",
+            }}
+          >
+            {note.content}
+          </p>
 
-            <p className="text-zinc-400 mb-4">
-              {note.content}
-            </p>
+          <button
+            onClick={() => deleteNote(note.id)}
+            className="keep-button"
+          >
+            Eliminar
+          </button>
 
-            <button
-              onClick={() => deleteNote(note.id)}
-              className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg"
-            >
-              Eliminar
-            </button>
+        </div>
 
-          </div>
-
-        ))}
-
-      </div>
+      ))}
 
     </div>
-  )
+
+  </div>
+)
 }

@@ -29,38 +29,43 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black text-white">
-      <form
-        onSubmit={handleLogin}
-        className="flex flex-col gap-4 p-8 bg-zinc-900 rounded-2xl w-80"
+  <div className="hero">
+    <form
+      onSubmit={handleLogin}
+      className="keep-card"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
+        maxWidth: "400px",
+        width: "100%",
+      }}
+    >
+      <h1>Iniciar sesión</h1>
+
+      <input
+        type="email"
+        placeholder="Correo"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="keep-input"
+      />
+
+      <input
+        type="password"
+        placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="keep-input"
+      />
+
+      <button
+        type="submit"
+        className="keep-button"
       >
-        <h1 className="text-2xl font-bold text-center">
-          Iniciar sesión
-        </h1>
-
-        <input
-          type="email"
-          placeholder="Correo"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="p-3 rounded bg-zinc-800 outline-none"
-        />
-
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="p-3 rounded bg-zinc-800 outline-none"
-        />
-
-        <button
-          type="submit"
-          className="bg-violet-600 hover:bg-violet-700 p-3 rounded"
-        >
-          Entrar
-        </button>
-      </form>
-    </div>
-  )
+        Entrar
+      </button>
+    </form>
+  </div>
+)
 }

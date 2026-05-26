@@ -68,72 +68,97 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+  <div className="p-8">
 
-      <h1 className="text-3xl font-bold mb-6">
-        Panel Admin
-      </h1>
+    <h1
+      style={{
+        fontSize: "2rem",
+        marginBottom: "24px",
+      }}
+    >
+      Panel Admin
+    </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div
+      style={{
+        marginBottom: "24px",
+      }}
+    >
+      <div className="stat-card">
+        <h2>Total Notas</h2>
 
-        <div className="bg-zinc-900 p-6 rounded-2xl">
-          <h2 className="text-zinc-400">
-            Total Notas
-          </h2>
-
-          <p className="text-3xl font-bold">
-            {notes.length}
-          </p>
-        </div>
-
+        <p>{notes.length}</p>
       </div>
+    </div>
 
-      {loading ? (
+    {loading ? (
 
-        <p>Cargando...</p>
+      <p>Cargando...</p>
 
-      ) : (
+    ) : (
 
-        <div className="flex flex-col gap-4">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+        }}
+      >
 
-          {notes.map((note) => (
+        {notes.map((note) => (
+
+          <div
+            key={note.id}
+            className="note-card"
+          >
 
             <div
-              key={note.id}
-              className="bg-zinc-900 p-4 rounded-xl border border-zinc-800"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                gap: "16px",
+              }}
             >
 
-              <div className="flex items-start justify-between gap-4">
+              <div>
 
-                <div>
-
-                  <h2 className="text-xl font-bold">
-                    {note.title}
-                  </h2>
-
-                  <p className="text-zinc-400 mt-2">
-                    {note.content}
-                  </p>
-
-                </div>
-
-                <button
-                  onClick={() => deleteNote(note.id)}
-                  className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg"
+                <h2
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "bold",
+                  }}
                 >
-                  Eliminar
-                </button>
+                  {note.title}
+                </h2>
+
+                <p
+                  style={{
+                    marginTop: "8px",
+                  }}
+                >
+                  {note.content}
+                </p>
 
               </div>
 
+              <button
+                onClick={() => deleteNote(note.id)}
+                className="keep-button"
+              >
+                Eliminar
+              </button>
+
             </div>
 
-          ))}
+          </div>
 
-        </div>
+        ))}
 
-      )}
+      </div>
 
-    </div>
-  )
+    )}
+
+  </div>
+)
 }

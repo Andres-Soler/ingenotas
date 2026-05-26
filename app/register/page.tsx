@@ -27,38 +27,47 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black text-white">
-      <form
-        onSubmit={handleRegister}
-        className="flex flex-col gap-4 p-8 bg-zinc-900 rounded-2xl w-80"
+  <div className="hero">
+
+    <form
+      onSubmit={handleRegister}
+      className="keep-card"
+      style={{
+        maxWidth: "400px",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
+      }}
+    >
+
+      <h1>Crear cuenta</h1>
+
+      <input
+        type="email"
+        placeholder="Correo"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="keep-input"
+      />
+
+      <input
+        type="password"
+        placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="keep-input"
+      />
+
+      <button
+        type="submit"
+        className="keep-button"
       >
-        <h1 className="text-2xl font-bold text-center">
-          Crear cuenta
-        </h1>
+        Registrarse
+      </button>
 
-        <input
-          type="email"
-          placeholder="Correo"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="p-3 rounded bg-zinc-800 outline-none"
-        />
+    </form>
 
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="p-3 rounded bg-zinc-800 outline-none"
-        />
-
-        <button
-          type="submit"
-          className="bg-violet-600 hover:bg-violet-700 p-3 rounded"
-        >
-          Registrarse
-        </button>
-      </form>
-    </div>
-  )
+  </div>
+)
 }
