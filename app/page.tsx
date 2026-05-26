@@ -18,6 +18,7 @@ export default function Home() {
         <div className="keep-card">
           <h1>IngeNotas</h1><p>
            Ingenotas, notas para los inges
+           Ignoren al mimico
           </p>
         </div>
       </main>
